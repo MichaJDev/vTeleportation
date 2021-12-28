@@ -1,0 +1,94 @@
+main: vTeleportation.Main
+name: vTeleportation
+description: homes,warps and more!
+depends: vCore
+version: a1.0.0
+commands:
+   tp:
+      description: tp to someone
+   tpa:
+      description: request to tp to someone
+   tpaccept:
+      description: accept tpa request
+   tpdeny:
+      description: deny tpa request
+   tptoggle:
+      description: deny all tp events to you
+   spawn:
+      description: teleport to spawn
+   setspawn:
+      description: set server spawn
+   home:
+      description: teleport to your home
+   homes:
+      description: list of your homes
+   sethome:
+      description: set a new home
+   delhome:
+      description: delete a home
+   warp:
+      description: teleport to warp
+   setwarp:
+      description: set a new warp
+   warps:
+      description: list of all the warps
+   delwarp:
+      description: delete a warp
+permissions:
+   vCore.teleport.*:
+      description: get all tprights
+      children:
+         vCore.teleport.tp: true
+         vCore.teleport.tpa: true
+         vCore.teleport.tpaccept: true
+         vCore.teleport.tpdeny: true
+         vCore.teleport.tptoggle: true
+   vCore.teleport.tp:
+      description: permission to tp
+   vCore.teleport.tpa:
+      description: permission to tpa
+   vCore.teleport.tpaccept:
+      description: permission to tpaccept
+   vCore.teleport.tpdeny:
+      description: permission to tpdeny
+   vCore.teleport.tptoggle:
+      description: permission to tptoggle
+   vCore.spawn.*:
+      description: permission to use all spawn commands
+      children:
+         vCore.spawn.spawn: true
+         vCore.spawn.setspawn: true
+   vCore.spawn.spawn:
+      description: permission to tp to spawn
+   vCore.spawn.setspawn:
+      description: permission to set server spawn
+   vCore.homes.*:
+      description: permission to use all home commands
+      children:
+         vCore.homes.home: true
+         vCore.homes.sethome: true
+         vCore.homes.homes: true
+         vCore.homes.delhome: true
+   vCore.homes.home:
+      description: permission to tp to your home
+   vCore.homes.sethome:
+      description: permission to set your new home
+   vCore.homes.delhome:
+      description: permission to delete a house
+   vCore.homes.homes:
+      description: permission to see your list og homes
+   vCore.warps.*:
+      description: permission to use all warp
+      children:
+         vCore.warps.warp: true
+         vCore.warps.warps: true
+         vCore.warps.setwarp: true
+         vCore.warps.delwarp: true
+   vCore.warps.warp:
+      description: permission to warp
+   vCore.warps.warps:
+      description: permission to list all warps
+   vCore.warps.setwarp:
+      description: permission to set a new warp
+   vCore.warps.delwarp:
+      description: permission to delete a warp
