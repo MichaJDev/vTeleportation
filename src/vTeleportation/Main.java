@@ -50,17 +50,20 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		getLogger().info("Loading commands.......");
-		getCommands();
-		getLogger().info("Loading Listeners........");
-		getListeners();
+		getLogger().info("checking for vCore.......");
 		if (getServer().getPluginManager().getPlugin("vCore") != null) {
+			getLogger().info("vCore found, nesting.......");
 			user = new UserBuilder(vMain);
 			cfg = new ConfigBuilder(vMain);
+			getLogger().info("vCore nested.......");
 		} else {
 			getLogger().severe("vCore note found...... disabling!");
 			getServer().getPluginManager().disablePlugin(this);
 		}
+		getLogger().info("Loading commands.......");
+		getCommands();
+		getLogger().info("Loading Listeners........");
+		getListeners();
 		spawn = new SpawnHandler(main, user, cfg);
 		tp = new TpHandler(main);
 		homes = new HomesHandler(main, user);
