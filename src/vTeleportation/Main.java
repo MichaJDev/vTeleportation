@@ -54,8 +54,13 @@ public class Main extends JavaPlugin {
 		getCommands();
 		getLogger().info("Loading Listeners........");
 		getListeners();
-		user = new UserBuilder(vMain);
-		cfg = new ConfigBuilder(vMain);
+		if (getServer().getPluginManager().getPlugin("vCore") != null) {
+			user = new UserBuilder(vMain);
+			cfg = new ConfigBuilder(vMain);
+		} else {
+			getLogger().severe("vCore note found...... disabling!");
+			getServer().getPluginManager().disablePlugin(this);
+		}
 		spawn = new SpawnHandler(main, user, cfg);
 		tp = new TpHandler(main);
 		homes = new HomesHandler(main, user);
@@ -66,7 +71,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-
+		getLogger().severe("vTeleportation disabled.");
 	}
 
 	private void getCommands() {
@@ -84,7 +89,7 @@ public class Main extends JavaPlugin {
 		this.getCommand("warp").setExecutor(new WarpCmd(this, warps));
 		this.getCommand("setwarp").setExecutor(new SetWarpCmd(this, warps));
 		this.getCommand("warps").setExecutor(new WarpsCmd(this, warps));
-		this.getCommand("delwarp").setExecutor(new DelWarpCmd(this,warps));
+		this.getCommand("delwarp").setExecutor(new DelWarpCmd(this, warps));
 
 	}
 
