@@ -53,8 +53,21 @@ public class Main extends JavaPlugin {
 		getLogger().info("checking for vCore.......");
 		if (getServer().getPluginManager().getPlugin("vCore") != null) {
 			getLogger().info("vCore found, nesting.......");
+			main.getLogger().info("Nesting user builder......");
 			user = new UserBuilder(vMain);
+			main.getLogger().info("Nesting config builder......");
 			cfg = new ConfigBuilder(vMain);
+			main.getLogger().info("Loading spawn handler......");
+			spawn = new SpawnHandler(main, user, cfg);
+			tp = new TpHandler(main);
+			main.getLogger().info("Loading tp handler......");
+			homes = new HomesHandler(main, user);
+			main.getLogger().info("Loading warps handler......");
+			warps = new WarpsHandler(main, cfg);
+			main.getLogger().info("Checking if Warps are set up......");
+			warps.setupWarps();
+			main.getLogger().info("Checking if Spawns are set up......");
+			spawn.setupSpawn();
 			getLogger().info("vCore nested.......");
 		} else {
 			getLogger().severe("vCore note found...... disabling!");
@@ -64,12 +77,7 @@ public class Main extends JavaPlugin {
 		getCommands();
 		getLogger().info("Loading Listeners........");
 		getListeners();
-		spawn = new SpawnHandler(main, user, cfg);
-		tp = new TpHandler(main);
-		homes = new HomesHandler(main, user);
-		warps = new WarpsHandler(main, cfg);
-		warps.setupWarps();
-		spawn.setupSpawn();
+
 	}
 
 	@Override

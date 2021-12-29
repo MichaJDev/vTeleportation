@@ -69,6 +69,8 @@ public class SpawnHandler implements ISpawnHandler {
 		if (!getSpawnFolder().exists()) {
 			createSpawnFolder();
 			createSpawnFile();
+		}else {
+			main.getLogger().info("Spawns found......");
 		}
 	}
 

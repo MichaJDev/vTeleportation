@@ -79,8 +79,11 @@ public class WarpsHandler implements IWarpsHandler {
 
 	@Override
 	public void setupWarps() {
-		if (!warpFolderExists())
+		if (!warpFolderExists()) {
 			createWarpFolder();
+		} else {
+			main.getLogger().info("Warps found......");
+		}
 	}
 
 	private void createWarpFile(Player p, String warpName) {
@@ -102,7 +105,7 @@ public class WarpsHandler implements IWarpsHandler {
 		if (dir.mkdirs()) {
 			main.getLogger().info("User WarpsFolder Created.");
 		} else {
-			main.getLogger().info("Failed to create User War[sFolder.");
+			main.getLogger().info("Failed to create User WarpsFolder.");
 		}
 	}
 
